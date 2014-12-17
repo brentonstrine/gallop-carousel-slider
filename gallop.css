@@ -1,0 +1,93 @@
+.gallop { 
+    overflow: visible;
+    position: relative;
+    min-height: 100px;
+    background-color: lightgrey;
+}
+
+.gallop ul { padding: 0; margin: 0;}
+.gallop li:nth-child(even) { background-color: lightblue;}
+.gallop li:nth-child(odd) { background-color: lightskyblue;}
+.gallop li {
+    width: 0px;
+    height: 100%;
+    transition-property: width;
+    transition-duration:.3s;
+    transition-timing-function: ease;
+    list-style: none;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:0;
+   
+}
+.gallop li.active {
+    left:auto;
+    right:0;
+    width: 100%;
+    transition-property: width;
+    transition-duration: .35s;
+    transition-timing-function: ease;
+}
+.gallop .controls {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    left:0;
+    background: #fff;
+     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+.gallop .controls .picker {
+    border-radius: 15px;
+    height: 10px;
+    width: 10px;
+    background-color: lightseagreen;
+    border: solid 5px #fff;
+    font-size: 9px;
+    min-width: 0;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    line-height: 10px;
+    overflow: hidden;
+}
+.gallop .controls .picker:hover, 
+.gallop .picker.active {
+    background-color: lightgreen;
+    border-width: 0;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.gallop .controls .autoplay {
+    width: 3px;
+    height: 10px;
+    border-left: solid 3px lightseagreen;
+    border-right: solid 3px lightseagreen;
+    display: inline-block;
+    margin: 5px 8px 5px 5px;
+    cursor: pointer;
+}
+
+.gallop .controls .autoplay:hover {
+    width: 0;
+    height: 0;
+    border-top: 7px solid #fff;
+    border-bottom: 7px solid #fff;
+    border-left: 14px solid lightgreen;
+    border-right: none;
+    margin: 3px 3px 3px 5px;
+}
