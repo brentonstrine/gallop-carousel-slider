@@ -48,9 +48,9 @@ for (var i = 0; i < itms; i++) {
 controls += '<div class="advance">&raquo;</div>';
 ```
 
-To get rid of the numbers in the picker dots, remove `"+i+"` from this line:
+To get rid of the numbers in the picker dots, remove `"+(i+1)+"` from this line:
 ```js
-controls += "<div class='picker' data-item='"+i+"'>"+i+"</div>";
+controls += "<div class='picker' data-item='"+i+"'>"+(i+1)+"</div>";
 ```
 
 To position the controls, mess with the CSS class:
