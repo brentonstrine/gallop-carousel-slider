@@ -4,7 +4,6 @@
     min-height: 100px;
     background-color: lightgrey;
 }
-
 .gallop ul { padding: 0; margin: 0;}
 .gallop li:nth-child(even) { background-color: lightblue;}
 .gallop li:nth-child(odd) { background-color: lightskyblue;}
@@ -22,7 +21,6 @@
     left:0;
     bottom:0;
     width:0;
-
 }
 .gallop li.active {
     left:auto;
@@ -54,7 +52,6 @@
     display: inline-block;
     cursor: pointer;
 }
-
 .gallop .controls .picker {
     border-radius: 15px;
     height: 10px;
@@ -77,7 +74,6 @@
     line-height: 20px;
     font-size: 15px;
 }
-
 .gallop .controls .advance,
 .gallop .controls .retreat {
     width: 20px;
@@ -87,14 +83,12 @@
     vertical-align: top;
     font-size: 20px;
 }
-
 .gallop .controls .advance:hover,
 .gallop .controls .retreat:hover {
     color: lightgreen;
     font-size: 40px;
     line-height: 14px;
 }
-
 .gallop .controls .autoplay {
     width: 3px;
     height: 10px;
@@ -102,7 +96,6 @@
     border-right: solid 3px lightseagreen;
     margin: 5px 8px 5px 5px;
 }
-
 .gallop .controls .autoplay:hover {
     width: 5px;
     height: 20px;
@@ -111,7 +104,6 @@
     margin: 0 4px 0 3px;
 
 }
-
 .gallop .controls .autoplay.off {
     width: 0;
     height: 0;
@@ -121,7 +113,6 @@
     border-right: none;
     margin: 3px 3px 3px 5px;
 }
-
 .gallop .controls .autoplay.off:hover {
     border-top: 10px solid #fff;
     border-bottom: 10px solid #fff;
