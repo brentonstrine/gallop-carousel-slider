@@ -1,4 +1,4 @@
-.gallop { 
+.gallop {
     overflow: visible;
     position: relative;
     min-height: 100px;
@@ -22,7 +22,7 @@
     left:0;
     bottom:0;
     width:0;
-   
+
 }
 .gallop li.active {
     left:auto;
@@ -62,7 +62,7 @@
     line-height: 10px;
     overflow: hidden;
 }
-.gallop .controls .picker:hover, 
+.gallop .controls .picker:hover,
 .gallop .picker.active {
     background-color: lightgreen;
     border-width: 0;
@@ -82,7 +82,8 @@
     cursor: pointer;
 }
 
-.gallop .controls .autoplay:hover {
+.gallop .controls .autoplay:hover,
+.gallop .controls .autoplay.off {
     width: 0;
     height: 0;
     border-top: 7px solid #fff;

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     // settings
     var autoPlay = true;
-    
+
     // init vars
     var $gallop = $(".gallop");
     var $slides = $("li");
@@ -21,19 +21,20 @@ $(document).ready(function(){
     //$(".gallop").on("click", ".advance", function(){
     //    gallop();
     //});
-    
+
     // slide backwards
     //$(".gallop").on("click", ".retreat", function(){
     //    ct = ct -2;
     //    gallop();
     //});
-    
+
     // toggle autoplay
     $(".gallop").on("click", ".autoplay", function(){
+        $(this).toggleClass("off");
         autoPlay = (autoPlay) ? false : true;
         autoGallop();
     });
-    
+
     // slide pick handler
     $(".gallop").on("click", ".picker", function(){
         pickItem($(this).attr("data-item"));
@@ -55,8 +56,8 @@ function autoGallop(){
         setTimeout( autoGallop, 3000 );
     }
 }
-        
+
 autoGallop();
 
-    
+
 });
