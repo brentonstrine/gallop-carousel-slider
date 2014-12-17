@@ -1,10 +1,8 @@
-Gallop Carousel Slider
-======================
+#Gallop Carousel Slider
 
-An extremely simple, barebones carousel. I try to let CSS do most of the work. My philosophy: why complicate things with tons of options and features? You already know Javascript and jQuery. If you want to make a change, just tweak it!
+An minimalistic, barebones carousel slider. I try to let CSS do most of the work so it's lightweight. I try to make the code readable so it's easy to configure.
 
-Installation
-============
+##Installation
 
 Include jQuery, the Javascript and CSS. 
 
@@ -27,36 +25,55 @@ Put your content in an HTML list, wrap it with a `<div>` with the class `gallop`
 </div>
 ```
 
-Tweak things until you're happy.
+##Configuration
 
-Autoplay:
+You already know Javascript. Why complicate things with tons of options and features? If you want to make a change, just tweak the code directly!
+
+###Autoplay
+Toggle default autoplay or adjust speed with these vars:
 ````js
 var autoPlay = true;
+var autoPlaySpeed = 3000;
 ```
 
-Rotation speed:
-```js
-function autoGallop(){
-    if(autoPlay){
-        gallop();
-        setTimeout( autoGallop, 3000 );
-    }
-}
-```
+###Controls
 
-Numbers in picker dots:
+Remove controls you don't want by commenting them out:
 ```js
+controls += '<div class="retreat">&laquo;</div>';
+controls += '<div class="autoplay"></div>';
 for (var i = 0; i < itms; i++) {
     controls += "<div class='picker' data-item='"+i+"'>"+i+"</div>";
 }
+controls += '<div class="advance">&raquo;</div>';
 ```
 
-Controls positioning:
+To get rid of the numbers in the picker dots, remove `"+i+"` from this line:
+```js
+controls += "<div class='picker' data-item='"+i+"'>"+i+"</div>";
+```
+
+To position the controls, mess with the CSS class:
 ```css
 .gallop .controls {
     bottom: -40px;
     right: 0;
     left:0;
+}
+```
+
+###Styling & Themes
+Styling is fairly minimalistic in the CSS file and is mostly structural. Create your own "theme" by adding your theme name as a class to the element:
+```html
+<div class="gallop myTheme">
+```
+
+and then prefix your custom CSS with that class:
+```css
+.gallop.myTheme .controls {
+    background-color: hotpink;
+    border: dashed 5px red;
+    box-shadow: 5px 5px 5px blue;
 }
 ```
 
