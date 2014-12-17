@@ -43,7 +43,7 @@ Remove controls you don't want by commenting them out:
 controls += '<div class="retreat">&laquo;</div>';
 controls += '<div class="autoplay"></div>';
 for (var i = 0; i < itms; i++) {
-    controls += "<div class='picker' data-item='"+i+"'>"+i+"</div>";
+    controls += "<div class='picker' data-item='"+i+"'>"+(i+1)+"</div>";
 }
 controls += '<div class="advance">&raquo;</div>';
 ```
