@@ -15,7 +15,7 @@ $(document).ready(function(){
     controls += '<div class="retreat">&laquo;</div>';
     controls += '<div class="autoplay"></div>';
     for (var i = 0; i < itms; i++) {
-        controls += "<div class='picker' data-item='"+i+"'>"+i+"</div>";
+        controls += "<div class='picker' data-item='"+i+"'>"+(i+1)+"</div>";
     }
     controls += '<div class="advance">&raquo;</div>';
     $gallop.append("<div class='controls'/>").find(".controls").append(controls);
