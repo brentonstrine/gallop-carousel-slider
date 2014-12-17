@@ -1,0 +1,225 @@
+<!doctype html><!--                                      click "RAW" up there ^^^ to see file in browser -->
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+<style>
+.gallop {
+    overflow: visible;
+    position: relative;
+    min-height: 100px;
+    background-color: lightgrey;
+}
+.gallop ul { padding: 0; margin: 0;}
+.gallop li:nth-child(even) { background-color: lightblue;}
+.gallop li:nth-child(odd) { background-color: lightskyblue;}
+.gallop li {
+    width: 0px;
+    height: 100%;
+    transition-property: width;
+    transition-duration:.3s;
+    transition-timing-function: ease;
+    list-style: none;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:0;
+}
+.gallop li.active {
+    left:auto;
+    right:0;
+    width: 100%;
+    transition-property: width;
+    transition-duration: .35s;
+    transition-timing-function: ease;
+}
+.gallop .controls {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    left:0;
+    background: #fff;
+     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+}
+.gallop .controls .advance,
+.gallop .controls .retreat,
+.gallop .controls .autoplay,
+.gallop .controls .picker {
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+}
+.gallop .controls .picker {
+    border-radius: 15px;
+    height: 10px;
+    width: 10px;
+    background-color: lightseagreen;
+    border: solid 5px #fff;
+    font-size: 9px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    line-height: 10px;
+    overflow: hidden;
+}
+.gallop .controls .picker:hover,
+.gallop .picker.active {
+    background-color: lightgreen;
+    border-width: 0;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    font-size: 15px;
+}
+.gallop .controls .advance,
+.gallop .controls .retreat {
+    width: 20px;
+    height: 20px;
+    color: lightseagreen;
+    line-height: 18px;
+    vertical-align: top;
+    font-size: 20px;
+}
+.gallop .controls .advance:hover,
+.gallop .controls .retreat:hover {
+    color: lightgreen;
+    font-size: 40px;
+    line-height: 14px;
+}
+.gallop .controls .autoplay {
+    width: 3px;
+    height: 10px;
+    border-left: solid 3px lightseagreen;
+    border-right: solid 3px lightseagreen;
+    margin: 5px 8px 5px 5px;
+}
+.gallop .controls .autoplay:hover {
+    width: 5px;
+    height: 20px;
+    border-left: solid 5px lightgreen;
+    border-right: solid 5px lightgreen;
+    margin: 0 4px 0 3px;
+
+}
+.gallop .controls .autoplay.off {
+    width: 0;
+    height: 0;
+    border-top: 7px solid #fff;
+    border-bottom: 7px solid #fff;
+    border-left: 14px solid lightseagreen;
+    border-right: none;
+    margin: 3px 3px 3px 5px;
+}
+.gallop .controls .autoplay.off:hover {
+    border-top: 10px solid #fff;
+    border-bottom: 10px solid #fff;
+    border-left: 20px solid lightgreen;
+    border-right: none;
+    margin: 0px 0px 0px 2px;
+}
+</style>
+<script>
+$(document).ready(function(){
+    // settings
+    var autoPlay = true;
+    var autoPlaySpeed = 3000;
+
+    // init vars
+    var $gallop = $(".gallop");
+    var $slides = $("li");
+    var itms = $slides.length;
+    var ct = 0;
+    var controls = '';
+    var timeout;
+
+    // create controls
+    controls += '<div class="retreat">&laquo;</div>';
+    controls += '<div class="autoplay"></div>';
+    for (var i = 0; i < itms; i++) {
+        controls += "<div class='picker' data-item='"+i+"'>"+(i+1)+"</div>";
+    }
+    controls += '<div class="advance">&raquo;</div>';
+    $gallop.append("<div class='controls'/>").find(".controls").append(controls);
+    var $pickers = $(".picker");
+
+    // slide forward
+    $(".gallop").on("click", ".advance", function(){
+        gallop();
+    });
+
+    // slide backwards
+    $(".gallop").on("click", ".retreat", function(){
+        ct = ct -2;
+        gallop();
+    });
+
+    // toggle autoplay
+    $(".gallop").on("click", ".autoplay", function(){
+        $(this).toggleClass("off");
+        autoPlay = (autoPlay) ? false : true;
+        autoGallop();
+    });
+
+    // slide pick handler
+    $(".gallop").on("click", ".picker", function(){
+        pickItem($(this).attr("data-item"));
+    });
+
+    // advance slide
+    function gallop() {
+        $slides.removeClass("active").eq(ct%itms).addClass("active");
+        $pickers.removeClass("active").eq(ct%itms).addClass("active");
+        ct++;
+    }
+
+    // go to specific slide
+    function pickItem(a) {
+        $slides.removeClass("active").eq(a).addClass("active");
+        $pickers.removeClass("active").eq(a).addClass("active");
+        ct = ++a;
+    }
+
+    // autoplay
+    function autoGallop(){
+        if(autoPlay){
+            gallop();
+            timeout = setTimeout( autoGallop, autoPlaySpeed );
+        } else {
+            clearTimeout(timeout);
+        }
+    }
+
+    // initiate autoplay
+    autoGallop();
+
+});
+</script>
+</head>
+<body>
+<p>This is a self-contained demo file. It may be out of date with the actual codebase. Check <code>gallop.html</code>, <code>gallop.js</code> and <code>gallop.css</code> to actually use the code.</p>
+<div class="gallop">
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+        <li>five</li>
+        <li>six</li>
+        <li>even>
+        <li>eight</li>
+        <li>nine</li>
+        <li>ten</li>
+        <li>eleven</li>
+        <li>twelve</li>
+    </ul>
+</div>
+</body>
+</html>
