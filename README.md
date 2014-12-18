@@ -2,6 +2,9 @@
 
 An minimalistic, barebones carousel slider. I try to let CSS do most of the work so it's lightweight. I try to make the code readable so it's easy to configure.
 
+##Demo
+* [View the demo](http://jsfiddle.net/brentonstrine/k38199k5/)!
+
 ##Installation
 
 Include jQuery, the Javascript and CSS. 
