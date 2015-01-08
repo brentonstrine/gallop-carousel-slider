@@ -4,11 +4,11 @@
     min-height: 100px;
     background-color: lightgrey;
 }
-.gallop ul { padding: 0; margin: 0;}
+.gallop ul { padding: 0; margin: 0; white-space: nowrap; font-size: 0; line-height: 0;}
 .gallop li:nth-child(even) { background-color: lightblue;}
 .gallop li:nth-child(odd) { background-color: lightskyblue;}
 .gallop li {
-    width: 0px;
+    width: 0;
     height: 100%;
     transition-property: width;
     transition-duration:.3s;
@@ -20,15 +20,8 @@
     top:0;
     left:0;
     bottom:0;
-    width:0;
-}
-.gallop li.active {
-    left:auto;
-    right:0;
-    width: 100%;
-    transition-property: width;
-    transition-duration: .35s;
-    transition-timing-function: ease;
+    font-size: 18px;
+    line-height: 22px;
 }
 .gallop .controls {
     position: absolute;
@@ -118,5 +111,5 @@
     border-bottom: 10px solid #fff;
     border-left: 20px solid lightgreen;
     border-right: none;
-    margin: 0px 0px 0px 2px;
+    margin: 0 0 0 2px;
 }

@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     // init vars
     var $gallop = $(".gallop");
-    var $slides = $("li");
+    var $slides = $(".gallop li");
     var itms = $slides.length;
     var ct = 0;
     var controls = '';
@@ -41,19 +41,19 @@ $(document).ready(function(){
 
     // slide pick handler
     $(".gallop").on("click", ".picker", function(){
-        pickItem($(this).attr("data-item"));
+        gallop($(this).attr("data-item"));
+        delayAutoGallop();
     });
 
     // advance slide
-    function gallop() {
-        $slides.removeClass("active").eq(ct%itms).addClass("active");
-        $pickers.removeClass("active").eq(ct%itms).addClass("active");
-        ct++;
-    }
-
-    // go to specific slide
-    function pickItem(a) {
-        $slides.removeClass("active").eq(a).addClass("active");
+    function gallop(a) {
+        var a = a || ct%itms;
+        $slides.removeClass("left").each(function(i){
+            $this = $(this);
+            if(i < a){
+                $this.addClass("left");
+            }
+        });
         $pickers.removeClass("active").eq(a).addClass("active");
         ct = ++a;
     }
@@ -65,6 +65,14 @@ $(document).ready(function(){
             timeout = setTimeout( autoGallop, autoPlaySpeed );
         } else {
             clearTimeout(timeout);
+        }
+    }
+
+    // delay autoplay for a bit
+    function delayAutoGallop(){
+        if(autoPlay){
+            clearTimeout(timeout);
+            timeout = setTimeout( autoGallop, (autoPlaySpeed * 1.5) );
         }
     }
 
