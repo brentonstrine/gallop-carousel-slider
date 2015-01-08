@@ -24,12 +24,14 @@ $(document).ready(function(){
     // slide forward
     $(".gallop").on("click", ".advance", function(){
         gallop();
+        delayAutoGallop();
     });
 
     // slide backwards
     $(".gallop").on("click", ".retreat", function(){
         ct = ct -2;
         gallop();
+        delayAutoGallop();
     });
 
     // toggle autoplay
@@ -68,7 +70,7 @@ $(document).ready(function(){
         }
     }
 
-    // delay autoplay for a bit
+    // delay autoplay after user action
     function delayAutoGallop(){
         if(autoPlay){
             clearTimeout(timeout);
