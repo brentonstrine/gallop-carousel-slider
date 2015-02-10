@@ -66,9 +66,11 @@ To position the controls, mess with the CSS class:
 ```
 
 ###Styling & Themes
-Styling is fairly minimalistic in the CSS file and is mostly structural. Create your own "theme" by adding your theme name as a class to the element:
+Styling is fairly minimalistic in the CSS file and is mostly structural. Create your own "theme" by adding your theme name as a **class** to the element:
 ```html
 <div class="gallop myTheme">
+    [...]
+</div>
 ```
 
 and then prefix your custom CSS with that class:
