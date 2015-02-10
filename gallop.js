@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     // init vars
     var $gallop = $(".gallop");
-    var $slides = $(".gallop li");
+    var $slides = $gallop.find("li");
     var itms = $slides.length;
     var ct = 0;
     var controls = '';
@@ -21,31 +21,34 @@ $(document).ready(function(){
     $gallop.append("<div class='controls'/>").find(".controls").append(controls);
     var $pickers = $(".picker");
 
-    // slide forward
-    $(".gallop").on("click", ".advance", function(){
-        gallop();
-        delayAutoGallop();
-    });
-
-    // slide backwards
-    $(".gallop").on("click", ".retreat", function(){
-        ct = ct -2;
-        gallop();
-        delayAutoGallop();
-    });
-
-    // toggle autoplay
-    $(".gallop").on("click", ".autoplay", function(){
-        $(this).toggleClass("off");
-        autoPlay = (autoPlay) ? false : true;
-        autoGallop();
-    });
-
-    // slide pick handler
-    $(".gallop").on("click", ".picker", function(){
-        gallop($(this).attr("data-item"));
-        delayAutoGallop();
-    });
+    // chained jQuery event handlers
+	$gallop
+	
+		// slide forward
+		.on("click", ".advance", function(){
+			gallop();
+			delayAutoGallop();
+		})
+	
+		// slide backwards
+		.on("click", ".retreat", function(){
+			ct += (ct<2) ? itms - ct - 1 : -2;
+			gallop();
+			delayAutoGallop();
+		})
+	
+		// toggle autoplay
+		.on("click", ".autoplay", function(){
+			$(this).toggleClass("off");
+			autoPlay = (autoPlay) ? false : true;
+			autoGallop();
+		})
+	
+		// slide pick handler
+		.on("click", ".picker", function(){
+			gallop($(this).attr("data-item"));
+			delayAutoGallop();
+		});
 
     // advance slide
     function gallop(a) {
@@ -63,6 +66,8 @@ $(document).ready(function(){
     // autoplay
     function autoGallop(){
         if(autoPlay){
+			$gallop.find(".advance").addClass("active");
+			setTimeout(function(){$gallop.find(".advance").removeClass("active")}, 500);
             gallop();
             timeout = setTimeout( autoGallop, autoPlaySpeed );
         } else {

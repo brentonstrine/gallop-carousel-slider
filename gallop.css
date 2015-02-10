@@ -81,7 +81,9 @@
     font-size: 20px;
 }
 .gallop .controls .advance:hover,
-.gallop .controls .retreat:hover {
+.gallop .controls .retreat:hover,
+.gallop .controls .advance.active,
+.gallop .controls .retreat.active {
     color: lightgreen;
     font-size: 40px;
     line-height: 14px;
