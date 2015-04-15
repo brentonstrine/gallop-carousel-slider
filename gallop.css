@@ -131,18 +131,42 @@
     margin: 0 0 0 2px;
 }
 
-/* Default Theme  */
-/* Create your own theme by copy/pasting the following code. Then change `.gallop` to `.yourThemeName` everywhere and start customizing. Remember to add class `yourThemeName` to the actual carousel HTML! */
+/* Default Theme                           */
 
-/* Default Theme: Styles and Colors */
-    .gallop {background-color: lightgrey;}
-    .gallop .controls {background: #fff;}
+/* Default Theme: Index                    */
+/*     Index                               */
+/*     Theme Creation Instructions         */
+/*     Styles and Colors                   */
+/*         Slide background colors         */
+/*         Controls background color       */
+/*         Controls default color          */
+/*         Controls hover color            */
+/*     Controls positioning                */
+/*         put controls below the carousel */
+/*         make space for the controls     */
 
-    /* Slide background colors */
-    .gallop li:nth-child(even) { background-color: lightblue;}
-    .gallop li:nth-child(odd) { background-color: lightskyblue;}
+/* Default Theme: Create your own theme*/
 
-    /* Controsl background color */
+    /*
+    First copy/paste the following code. Then change
+    `.gallop` to `.yourThemeName` everywhere and start
+    customizing. Remember to add class `yourThemeName`
+    to the actual carousel HTML!
+    */
+
+/* Default Theme: Styles and Colors        */
+
+    /* Slide background colors: lightblue / lightskyblue */
+    .gallop li:nth-child(even) {
+        background-color: lightblue;
+    }
+    .gallop li:nth-child(odd) {
+        background-color: lightskyblue;
+    }
+    /* Controls background color: #fff; */
+    .gallop .controls {
+        background: #fff;
+    }
     .gallop .controls .picker {
         border-color: #fff;
     }
@@ -161,7 +185,7 @@
     .gallop .controls .autoplay.off {
         border-left-color: lightseagreen;
     }
-    /* Controls hilight color: lightgreen */
+    /* Controls hover color: lightgreen */
     .gallop .controls .advance:hover,
     .gallop .controls .advance:focus,
     .gallop .controls .retreat:hover,
@@ -185,7 +209,8 @@
         border-right-color: lightgreen;
     }
 
-/* Default Theme: Controls positioning */
+/* Default Theme: Controls positioning     */
+
     /* put controls below the carousel */
     .gallop .controls {
         position: absolute;
