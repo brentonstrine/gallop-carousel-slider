@@ -63,6 +63,7 @@
     overflow: hidden;
 }
 .gallop .controls .picker:hover,
+.gallop .controls .picker:focus,
 .gallop .picker.active {
     background-color: lightgreen;
     border-width: 0;
@@ -81,7 +82,9 @@
     font-size: 20px;
 }
 .gallop .controls .advance:hover,
+.gallop .controls .advance:focus,
 .gallop .controls .retreat:hover,
+.gallop .controls .retreat:focus,
 .gallop .controls .advance.active,
 .gallop .controls .retreat.active {
     color: lightgreen;
@@ -95,7 +98,8 @@
     border-right: solid 3px lightseagreen;
     margin: 5px 8px 5px 5px;
 }
-.gallop .controls .autoplay:hover {
+.gallop .controls .autoplay:hover,
+.gallop .controls .autoplay:focus {
     width: 5px;
     height: 20px;
     border-left: solid 5px lightgreen;
@@ -112,7 +116,8 @@
     border-right: none;
     margin: 3px 3px 3px 5px;
 }
-.gallop .controls .autoplay.off:hover {
+.gallop .controls .autoplay.off:hover,
+.gallop .controls .autoplay.off:focus {
     border-top: 10px solid #fff;
     border-bottom: 10px solid #fff;
     border-left: 20px solid lightgreen;
