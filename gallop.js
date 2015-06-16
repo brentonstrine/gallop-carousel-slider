@@ -22,33 +22,32 @@ $(document).ready(function(){
     var $pickers = $(".picker");
 
     // chained jQuery event handlers
-	$gallop
-	
-		// slide forward
-		.on("click", ".advance", function(){
-			gallop();
-			delayAutoGallop();
-		})
-	
-		// slide backwards
-		.on("click", ".retreat", function(){
-			ct += (ct<2) ? itms - ct - 1 : -2;
-			gallop();
-			delayAutoGallop();
-		})
-	
-		// toggle autoplay
-		.on("click", ".autoplay", function(){
-			$(this).toggleClass("off");
-			autoPlay = (autoPlay) ? false : true;
-			autoGallop();
-		})
-	
-		// slide pick handler
-		.on("click", ".picker", function(){
-			gallop($(this).attr("data-item"));
-			delayAutoGallop();
-		});
+    $gallop
+	// slide forward
+	.on("click", ".advance", function(){
+		gallop();
+		delayAutoGallop();
+	})
+
+	// slide backwards
+	.on("click", ".retreat", function(){
+		ct += (ct<2) ? itms - ct - 1 : -2;
+		gallop();
+		delayAutoGallop();
+	})
+
+	// toggle autoplay
+	.on("click", ".autoplay", function(){
+		$(this).toggleClass("off");
+		autoPlay = (autoPlay) ? false : true;
+		autoGallop();
+	})
+
+	// slide pick handler
+	.on("click", ".picker", function(){
+		gallop($(this).attr("data-item"));
+		delayAutoGallop();
+	});
 
     // advance slide
     function gallop(a) {
